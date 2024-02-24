@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+	      name="viewport">
+	<meta content="ie=edge" http-equiv="X-UA-Compatible">
+	<link href="./index.css" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+	<title>Form</title>
+</head>
+<body>
+	<main>
+		<div class="container">
+			<form id="myForm">
+				<h2>Ми хотіли б Вам допомогти</h2>
+				<input
+				 class="input"
+				  placeholder="Iм’я"
+				   type="text"
+				    name="name">
+
+				<textarea 
+				class="input" 
+				placeholder="Повідомлення" 
+				name="message"
+				minlength="2"></textarea>
+                <input 
+				<h3>Як вам відповісти?</h3>
+				<input
+				class="input" 
+				placeholder="Номер телефона"
+				pattern="[0-9]{5,12}" 
+				type="tel" 
+				name="phone">
+
+				<input 
+				class="input" 
+
+				pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+				placeholder="Чи email"
+				type="email" 
+				name="email">
+
+			     <input 
+				 type="file" 
+				 accept="image/*" 
+				 multiple>
+
+				<button class="btn" type="submit">Надіслати запит</button>
+			</form>
+			
+			<div id="resultDiv"></div>
+		</div>
+	
+	</main>
+	
+	
+	<script>
+		document.addEventListener('submit', function(event) {
+			console.log(event,'event')
+			// Check if the submitted form is your form with the ID 'myForm'
+			if (event.target.id === 'myForm') {
+				// Prevent the default form submission
+				event.preventDefault();
+				
+				// Get the form element
+				const form = event.target;
+				
+				// Get all form fields
+				const formData = new FormData(form);
+				
+				let result = '';
+				
+				// Iterate through form data and build the result string
+				formData.forEach(function(value, key){
+					result += key + ': ' + value + '\n';
+				});
+				
+				// Display the result in the resultDiv
+				document.getElementById('resultDiv').innerText = result;
+				// If you want to do something else with the result, you can do it here
+				
+				return false
+			}
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
